@@ -5,6 +5,7 @@
     pkgs.typescript
     pkgs.npm-check-updates
     pkgs.nodePackages.nodemon
+    pkgs.sqlite
   ];
   env = {};
   idx = {
