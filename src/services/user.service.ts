@@ -1,5 +1,8 @@
 import User from '@models/user'
 
+/**
+ * Serviço do usuário
+ */
 const userService = {
   /**
    * Lista todos os usuários do sistema

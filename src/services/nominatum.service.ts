@@ -1,0 +1,26 @@
+import { INominatimLocal } from '@interfaces/nominatim'
+
+/**
+ * Serviço de Geolocalização - Nominatim
+ */
+const nominatimService = {
+  /**
+   * Busca um local pelo nome da cidade
+   * 
+   * @param city nome da cidade
+   * @returns uma lista de locais
+   */
+  getInfoLocalsByName: async (city: string) => {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&format=json`)
+
+    const locais = await response.json() as INominatimLocal[]
+
+    if (locais.length === 0) {
+      throw new Error('Nenhum local encontrado')
+    }
+
+    return locais
+  }
+}
+
+export default nominatimService
