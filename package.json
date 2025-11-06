@@ -1,15 +1,17 @@
 {
   "name": "openweather-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
-    "start": "tsc -b && node ./dist/bin/www",
-    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./bin/www.ts",
+    "start": "cross-env NODE_ENV=production tsc -b && node ./dist/src/bin/www",
+    "dev": "cross-env NODE_ENV=development nodemon --watch \"**/*.ts\" --exec ts-node -r tsconfig-paths/register ./src/bin/www.ts",
+    "test": "cross-env NODE_ENV=test ts-node -r tsconfig-paths/register ./src/bin/www.ts",
     "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
     "debug": "~4.4.3",
+    "dotenv": "^17.2.3",
     "express": "~5.1.0",
     "morgan": "~1.10.1"
   },
@@ -20,12 +22,14 @@
     "@types/express": "^5.0.5",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.10.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "jiti": "^2.6.1",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3"
   }
