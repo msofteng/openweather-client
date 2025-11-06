@@ -46,6 +46,10 @@ export interface IOpenWeatherInfo {
 	 * Dados de alertas meteorológicos nacionais dos principais sistemas nacionais de aviso meteorológico.
 	 */
 	alerts?: IOpenWeatherCurrentAlert[]
+	/**
+	 * código de erro
+	 */
+	cod?: number
 }
 
 /**

@@ -6,5 +6,6 @@ const indexRouter = Router()
 
 /* GET home page. */
 indexRouter.get('/', indexController.homePage)
+indexRouter.get('/weather', indexController.buscarPrevisao)
 
 export default indexRouter

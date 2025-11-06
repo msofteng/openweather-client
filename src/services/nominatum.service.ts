@@ -11,8 +11,12 @@ const nominatimService = {
    * @returns uma lista de locais
    */
   getInfoLocalsByName: async (city: string) => {
-    const response = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&format=json`)
-
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&format=json`, {
+      headers: {
+        'User-Agent': 'openweather-client/1.0',
+        'Accept': 'application/json'
+      }
+    })
     const locais = await response.json() as INominatimLocal[]
 
     if (locais.length === 0) {

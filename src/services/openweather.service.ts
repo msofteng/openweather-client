@@ -21,7 +21,12 @@ const openWeatherService = {
       apiKey: string
     }
   ) => {
-    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${data.lat}&lon=${data.lon}&appid=${data.apiKey}`)
+    const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${data.lat}&lon=${data.lon}&appid=${data.apiKey}`, {
+      headers: {
+        'User-Agent': 'openweather-client/1.0',
+        'Accept': 'application/json'
+      }
+    })
 
     const dados = await response.json() as IOpenWeatherInfo
 
