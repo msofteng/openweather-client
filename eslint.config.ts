@@ -20,6 +20,9 @@ export default defineConfig([
       ],
       'indent': ['error', 2]
     },
-    ignores: ['dist']
+    ignores: [
+      'dist',
+      'src/entities/*.ts'
+    ]
   }
 ])

@@ -39,6 +39,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
     "baseUrl": "./src",
     "paths": {
       "@routes/*": ["routes/*"],
