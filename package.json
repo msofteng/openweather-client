@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "tsc -b && node ./dist/bin/www",
-    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./bin/www.ts",
+    "start": "tsc -b && node ./dist/src/bin/www",
+    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./src/bin/www.ts",
     "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
