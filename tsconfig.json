@@ -45,6 +45,7 @@
       "@controllers/*": ["controllers/*"],
       "@services/*": ["services/*"],
       "@models/*": ["models/*"],
+      "@configs/*": ["configs/*"]
     }
   }
 }

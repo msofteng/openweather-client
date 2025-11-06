@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 
-import app from '../app'
+import config from '@configs/env'
 import debug from 'debug'
 import http from 'http'
+import app from '../app'
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000')
+const port = normalizePort(config.port)
 app.set('port', port)
 
 /**
@@ -25,7 +26,14 @@ const server = http.createServer(app)
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port)
+app.listen(port, () => {
+  const message = `Servidor rodando na porta ${port} no modo "${config.nodeEnv}" ... 🚀🚀🚀`
+  const dots = Array.from({ length: message.length }).map(() => '=').join('')
+
+  console.log(dots)
+  console.log(message)
+  console.log(dots)
+})
 
 server.on('error', onError)
 server.on('listening', onListening)
