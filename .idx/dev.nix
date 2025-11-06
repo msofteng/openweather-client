@@ -8,25 +8,24 @@
     extensions = [
       "dbaeumer.vscode-eslint"
     ];
+    workspace = {
+      onCreate = {
+        npm-install = "npm install";
+      };
+      onStart = {
+        dev-server = "npm run start";
+      };
+    };
     previews = {
       enable = true;
       previews = {
         web = {
-          command = ["npm" "run" "dev" "--" "--port" "$PORT"];
+          command = ["npm" "run" "start" "--" "--port" "$PORT"];
           manager = "web";
           env = {
             PORT = "$PORT";
           };
         };
-      };
-    };
-    workspace = {
-      onCreate = {
-        default.openFiles = [ ".idx/dev.nix" "README.md" ];
-        npm-install = "npm install";
-      };
-      onStart = {
-        dev-server = "npm run dev";
       };
     };
   };
