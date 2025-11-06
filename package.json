@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "tsc -b && node ./dist/src/bin/www",
-    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./src/bin/www.ts",
+    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node -r tsconfig-paths/register ./src/bin/www.ts",
     "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3"
   }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import User from '../models/user'
 
-import userService from '../services/user.service'
+import User from '@models/user'
+import userService from '@services/user.service'
 
 const usersController = {
   homeUsers: (req: Request, res: Response) => {
