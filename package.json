@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "tsc -b && node ./dist/bin/www",
-    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./bin/www.ts"
+    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./bin/www.ts",
+    "lint": "eslint . --ext .ts --fix"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
@@ -13,13 +14,19 @@
     "morgan": "~1.10.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@types/cookie-parser": "^1.4.10",
     "@types/debug": "^4.1.12",
     "@types/express": "^5.0.5",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.10.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "jiti": "^2.6.1",
     "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
   }
 }
