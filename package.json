@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "tsc -b && node ./dist/bin/www"
+    "start": "tsc -b && node ./dist/bin/www",
+    "dev": "nodemon --watch \"**/*.ts\" --exec ts-node ./bin/www.ts"
   },
   "dependencies": {
     "cookie-parser": "~1.4.7",
@@ -17,7 +18,8 @@
     "@types/express": "^5.0.5",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.10.0",
-    "ts-node-dev": "^2.0.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }

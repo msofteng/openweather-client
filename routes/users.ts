@@ -7,7 +7,7 @@ usersRouter.get('/', (req: Request, res: Response, next: NextFunction) => {
   res.send('respond with a resource');
 });
 
-usersRouter.get('/list', (req: Request, res: Response<{ id: number, nome: string }[]>, next: NextFunction) => {
+usersRouter.get('/list', (req: Request<never, never, never, { nome: string }>, res: Response<{ id: number, nome: string }[]>, next: NextFunction) => {
   res.send([
     { id: 1, nome: 'João' },
     { id: 2, nome: 'Maria' },
@@ -19,7 +19,7 @@ usersRouter.get('/list', (req: Request, res: Response<{ id: number, nome: string
     { id: 8, nome: 'Sofia' },
     { id: 9, nome: 'Rui' },
     { id: 10, nome: 'Inês' },
-  ])
+  ].filter((user) => user.nome.includes(req.query.nome ?? '')))
 });
 
 export default usersRouter;
