@@ -27,7 +27,10 @@ const cidadeRepository = dataSource.getRepository(Cidade).extend({
 
   listarCidade(cidade: Partial<Cidade>) {
     return this.findOne({
-      where: cidade
+      where: cidade,
+      relations: [
+        'previsoes'
+      ]
     })
   }
 })

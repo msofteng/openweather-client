@@ -102,6 +102,36 @@ const indexController = {
     }
 
     res.send(cidadeEncontrada)
+  },
+
+  buscarCidade: async (
+    req: Request<
+      never,
+      never,
+      never,
+      {
+        name?: string
+      }
+    >,
+    res: Response
+  ) => {
+    if (!req.query.name) {
+      res.status(400).send({
+        message: 'Insira o nome de uma cidade'
+      })
+    }
+
+    const cidade = await cidadeRepository.listarCidade({
+      nome: req.query.name
+    })
+
+    if (!cidade) {
+      res.status(404).send({
+        message: 'Cidade não encontrada'
+      })
+    }
+
+    res.send(cidade)
   }
 }
 
