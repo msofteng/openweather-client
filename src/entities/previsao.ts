@@ -12,8 +12,11 @@ export default class Previsao {
   @Column({ name: 'dt_previsao' })
   dtPrevisao: string
 
-  @Column()
-  temperatura: string
+  @Column({ name: 'temperatura_min' })
+  min: string
+
+  @Column({ name: 'temperatura_max' })
+  max: string
 
   @Column()
   pressao: string
@@ -41,7 +44,8 @@ export default class Previsao {
     id: number,
     descricao: string,
     dtPrevisao: string,
-    temperatura: string,
+    min: string,
+    max: string,
     pressao: string,
     umidade: string,
     nebulosidade: string,
@@ -53,7 +57,8 @@ export default class Previsao {
     this.id = id
     this.descricao = descricao
     this.dtPrevisao = dtPrevisao
-    this.temperatura = temperatura
+    this.min = min
+    this.max = max
     this.pressao = pressao
     this.umidade = umidade
     this.nebulosidade = nebulosidade

@@ -88,12 +88,13 @@ const indexController = {
         previsoes: previsao.daily.map((dia) => ({
           descricao: dia.weather[0].description,
           dtPrevisao: converterUnixParaTimestamp(dia.dt),
-          temperatura: `${dia.temp}°C`,
+          min: `${converterKelvinParaCelsius(dia.temp.min)}°C`,
+          max: `${converterKelvinParaCelsius(dia.temp.max)}°C`,
           pressao: `${dia.pressure} hPa`,
           umidade: `${dia.humidity}%`,
           nebulosidade: `${dia.clouds}%`,
           vento: `${converterMsParaKmH(dia.wind_speed)} km/h`,
-          chuva: dia.rain ? `${dia.rain['1h']} mm` : '-',
+          chuva: dia.rain ? `${dia.rain} mm` : '-',
           imgUrl: `http://openweathermap.org/img/wn/${dia.weather[0].icon}@4x.png`,
           cidade: { ...cidadeEncontrada, previsoes: [] }
         }))

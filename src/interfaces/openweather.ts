@@ -164,7 +164,7 @@ export interface IOpenWeatherCurrent {
 		 * Observe que apenas mm/h são as unidades de medida disponíveis para este parâmetro.
 		 */
 		'1h': number
-	}
+	} | number
 	/**
 	 * Precipitação (volume/neve) mm/h.
 	 */
@@ -173,7 +173,7 @@ export interface IOpenWeatherCurrent {
 		 * Observe que apenas mm/h são as unidades de medida disponíveis para este parâmetro.
 		 */
 		'1h': number
-	}
+	} | number
 	/**
 	 * Lista de condições climáticas
 	 */
