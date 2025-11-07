@@ -2,7 +2,7 @@ import dataSource from '@configs/data-source'
 import Previsao from '@entities/previsao'
 import Pagination from '@interfaces/pagination'
 
-const previsaoRepository = dataSource.getRepository('previsao').extend({
+const previsaoRepository = dataSource.getRepository(Previsao).extend({
   cadastrarPrevisao(previsao: Previsao) {
     return this.save(previsao)
   },

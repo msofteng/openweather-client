@@ -7,7 +7,7 @@
  */
 export function converterUnixParaTimestampBrasilia(dt: number): string {
   // dt vem em segundos, Date espera milissegundos
-  const date = new Date((dt + (3 * 3600)) * 1000) // +3h = fuso de Brasília
+  const date = new Date(dt * 1000)
   const ano = date.getUTCFullYear()
   const mes = String(date.getUTCMonth() + 1).padStart(2, '0')
   const dia = String(date.getUTCDate()).padStart(2, '0')

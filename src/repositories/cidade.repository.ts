@@ -2,7 +2,7 @@ import dataSource from '@configs/data-source'
 import Cidade from '@entities/cidade'
 import Pagination from '@interfaces/pagination'
 
-const cidadeRepository = dataSource.getRepository('cidade').extend({
+const cidadeRepository = dataSource.getRepository(Cidade).extend({
   cadastrarCidade(cidade: Cidade) {
     return this.save(cidade)
   },

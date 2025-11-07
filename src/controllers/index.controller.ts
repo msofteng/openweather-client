@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import config from '@configs/env'
 import nominatimService from '@services/nominatum.service'
 import openWeatherService from '@services/openweather.service'
+import cidadeRepository from 'repositories/cidade.repository'
 
 const indexController = {
   /**
@@ -52,6 +53,20 @@ const indexController = {
         message: 'Chave de API inválida'
       })
     }
+
+    let cidadeEncontrada = await cidadeRepository.findOneBy({
+      nome: cidades[0].name
+    })
+    
+    if (!cidadeEncontrada) {
+      cidadeEncontrada = cidadeRepository.create({
+        nome: cidades[0].name
+      })
+
+      await cidadeRepository.save(cidadeEncontrada)
+    }
+    
+    console.log(cidadeEncontrada)
 
     res.send(previsao)
   }

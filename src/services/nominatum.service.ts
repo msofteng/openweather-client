@@ -19,10 +19,6 @@ const nominatimService = {
     })
     const locais = await response.json() as INominatimLocal[]
 
-    if (locais.length === 0) {
-      throw new Error('Nenhum local encontrado')
-    }
-
     return locais
   }
 }
