@@ -23,7 +23,7 @@
     "declarationMap": true,
 
     // Stricter Typechecking Options
-    "exactOptionalPropertyTypes": true,
+    // "exactOptionalPropertyTypes": true,
 
     // Style Options
     // "noImplicitReturns": true,
@@ -39,6 +39,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
 
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
     "baseUrl": "./src",
     "paths": {
       "@routes/*": ["routes/*"],
@@ -46,7 +49,10 @@
       "@services/*": ["services/*"],
       "@models/*": ["models/*"],
       "@interfaces/*": ["interfaces/*"],
-      "@configs/*": ["configs/*"]
+      "@configs/*": ["configs/*"],
+      "@entities/*": ["entities/*"],
+      "@repos/*": ["repositories/*"],
+      "@functions/*": ["utils/functions/*"]
     }
   }
 }

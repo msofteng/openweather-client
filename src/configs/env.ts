@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import path from 'path'
 
 // Determina o ambiente atual
-const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV ?? 'development'
 
 // Escolhe o arquivo .env correto
 const envFile = path.resolve(process.cwd(), `.env.${env}`)
@@ -12,9 +12,12 @@ dotenv.config({ path: envFile })
 
 // Exporta as variáveis para uso no app
 const config = {
-  port: process.env.PORT || '3000',
-  openWeatherApiKey: process.env.OPENWEATHER_API_KEY || '',
-  nodeEnv: process.env.NODE_ENV || 'development'
+  port: process.env.PORT ?? '3000',
+  openWeatherApiKey: process.env.OPENWEATHER_API_KEY ?? '',
+  nodeEnv: process.env.NODE_ENV ?? 'development',
+  dbType: process.env.DB_TYPE ?? '',
+  dbUrl: process.env.DB_URL ?? '',
+  dbSynchronize: process.env.DB_SYNCHRONIZE === 'true'
 }
 
 export default config

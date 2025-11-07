@@ -7,9 +7,9 @@ const userService = {
   /**
    * Lista todos os usuários do sistema
    * 
-   * @param nome nome do usuário (opcional)
-   * @returns uma lista de usuários (se tiver o nome de busca)
-   * @returns uma mensagem de erro (se não tiver o nome de busca)
+   * @param {string | undefined} nome nome do usuário (opcional)
+   * @returns {Promise<User[]>} uma lista de usuários (se tiver o nome de busca)
+   * @returns {Promise<{message: string}>} uma mensagem de erro (se não tiver o nome de busca)
    */
   listarUsuarios: async (nome?: string) => {
     return new Promise<User[]>((resolve, reject) => {
