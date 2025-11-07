@@ -88,20 +88,26 @@ const indexController = {
         previsoes: previsao.daily.map((dia) => ({
           descricao: dia.weather[0].description,
           dtPrevisao: converterUnixParaTimestamp(dia.dt),
-          min: `${converterKelvinParaCelsius(dia.temp.min)}°C`,
-          max: `${converterKelvinParaCelsius(dia.temp.max)}°C`,
+          min: `${converterKelvinParaCelsius(dia.temp.min).toFixed(1).replace('.', ',')} °C`,
+          max: `${converterKelvinParaCelsius(dia.temp.max).toFixed(1).replace('.', ',')} °C`,
           pressao: `${dia.pressure} hPa`,
           umidade: `${dia.humidity}%`,
           nebulosidade: `${dia.clouds}%`,
-          vento: `${converterMsParaKmH(dia.wind_speed)} km/h`,
-          chuva: dia.rain ? `${dia.rain} mm` : '-',
+          vento: `${converterMsParaKmH(dia.wind_speed).toFixed(1).replace('.', ',')} km/h`,
+          chuva: dia.rain ? `${Number(dia.rain).toFixed(2).replace('.', ',')} mm` : '-',
           imgUrl: `http://openweathermap.org/img/wn/${dia.weather[0].icon}@4x.png`,
           cidade: { ...cidadeEncontrada, previsoes: [] }
         }))
       })
     }
 
-    res.send(cidadeEncontrada)
+    res.send({
+      ...cidadeEncontrada,
+      previsoes: cidadeEncontrada.previsoes.map((previsao) => ({
+        ...previsao,
+        cidade: undefined
+      }))
+    })
   },
 
   buscarCidade: async (
