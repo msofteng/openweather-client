@@ -8,8 +8,8 @@ const indexController = {
   /**
    * Mostra a página inicial
    * 
-   * @param req dados da requisição
-   * @param res dados da resposta
+   * @param {Request} req dados da requisição
+   * @param {Response} res dados da resposta
    */
   homePage: (req: Request, res: Response) => {
     res.sendFile('index.html')

@@ -7,8 +7,8 @@ const usersController = {
   /**
    * Mostra uma página inicial de integridade
    * 
-   * @param req dados da requisição
-   * @param res dados da resposta
+   * @param {Request} req dados da requisição
+   * @param {Response} res dados da resposta
    */
   homeUsers: (req: Request, res: Response) => {
     res.send('respond with a resource')
@@ -17,8 +17,8 @@ const usersController = {
   /**
    * Mostra todos os usuários do sistema
    * 
-   * @param req dados da requisição
-   * @param res dados da resposta
+   * @param {Request} req dados da requisição
+   * @param {Response} res dados da resposta
    * 
    * @returns uma lista de usuários (se tiver o nome de busca)
    * @returns uma mensagem de erro (se não tiver o nome de busca)
@@ -26,7 +26,7 @@ const usersController = {
   listUsers: async (
     req: Request<never, never, never, { nome?: string }>,
     res: Response<User[] | { message: string }>
-  ) => {
+  ): Promise<void> => {
     try {
       const usuarios = await userService.listarUsuarios(req.query.nome)
       res.send(usuarios)

@@ -7,10 +7,10 @@ const nominatimService = {
   /**
    * Busca um local pelo nome da cidade
    * 
-   * @param city nome da cidade
-   * @returns uma lista de locais
+   * @param {string} city nome da cidade
+   * @returns {Promise<INominatimLocal[]>} uma lista de locais
    */
-  getInfoLocalsByName: async (city: string) => {
+  getInfoLocalsByName: async (city: string): Promise<INominatimLocal[]> => {
     const response = await fetch(`https://nominatim.openstreetmap.org/search?city=${city}&format=json`, {
       headers: {
         'User-Agent': 'openweather-client/1.0',

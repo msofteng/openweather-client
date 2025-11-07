@@ -7,12 +7,12 @@ const openWeatherService = {
   /**
    * Busca a previsão do tempo de um local por sua coordenada geográfica
    * 
-   * @param data informações do local e de autenticação a API
-   * @param data.lat latitude do local
-   * @param data.lon longitude do local
-   * @param data.apiKey chave de autenticação da API
+   * @param {object} data informações do local e de autenticação a API
+   * @param {string} data.lat latitude do local
+   * @param {string} data.lon longitude do local
+   * @param {string} data.apiKey chave de autenticação da API
    
-  * @returns previsão do tempo dessa localização
+   * @returns {Promise<IOpenWeatherInfo>} previsão do tempo dessa localização
    */
   searchWeatherForecastByCoord: async (
     data: {
@@ -20,7 +20,7 @@ const openWeatherService = {
       lon: string,
       apiKey: string
     }
-  ) => {
+  ): Promise<IOpenWeatherInfo> => {
     const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${data.lat}&lon=${data.lon}&appid=${data.apiKey}`, {
       headers: {
         'User-Agent': 'openweather-client/1.0',

@@ -50,7 +50,8 @@
       "@models/*": ["models/*"],
       "@interfaces/*": ["interfaces/*"],
       "@configs/*": ["configs/*"],
-      "@entities/*": ["entities/*"]
+      "@entities/*": ["entities/*"],
+      "@functions/*": ["utils/functions/*"]
     }
   }
 }

@@ -57,17 +57,17 @@ export interface IOpenWeatherInfo {
  */
 export interface IOpenWeatherCurrent {
 	/**
-	 * Hora atual Unix UTC
+	 * Hora atual (Unix UTC)
 	 */
 	dt: number
 	/**
-	 * Horário do nascer do sol Unix UTC.
+	 * Horário do nascer do sol (Unix UTC).
 	 * 
 	 * Para áreas polares durante os períodos de sol da meia-noite e noite polar este parâmetro não é retornado na resposta.
 	 */
 	sunrise: number
 	/**
-	 * Horário do pôr do sol Unix UTC.
+	 * Horário do pôr do sol (Unix UTC).
 	 * 
 	 * Para áreas polares durante os períodos de sol da meia-noite e noite polar este parâmetro não é retornado na resposta.
 	 */
@@ -276,7 +276,7 @@ export interface IOpenWeatherCurrentWeather {
  */
 export interface IOpenWeatherCurrentMinutely {
 	/**
-	 * Horário dos dados previstos formato Unix UTC
+	 * Horário dos dados previstos formato (Unix UTC)
 	 */
 	dt: number
 	/**
@@ -304,11 +304,11 @@ export interface IOpenWeatherCurrentHourly extends IOpenWeatherCurrent {
  */
 type IOpenWeatherCurrentDaily = IOpenWeatherCurrent & IOpenWeatherCurrentHourly & {
 	/**
-	 * Horário do nascer da lua para este dia Unix UTC
+	 * Horário do nascer da lua para este dia (Unix UTC)
 	 */
 	moonrise: number
 	/**
-	 * Horário do pôr da lua neste dia Unix UTC
+	 * Horário do pôr da lua neste dia (Unix UTC)
 	 */
 	moonset: number
 	/**
@@ -371,11 +371,11 @@ export interface IOpenWeatherCurrentAlert {
 	 */
 	event: string
 	/**
-	 * Data e hora do início do alerta Unix UTC
+	 * Data e hora do início do alerta (Unix UTC)
 	 */
 	start: string
 	/**
-	 * Data e hora do término do alerta Unix UTC
+	 * Data e hora do término do alerta (Unix UTC)
 	 */
 	end: string
 	/**
