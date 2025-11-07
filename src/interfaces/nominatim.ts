@@ -59,7 +59,29 @@ export interface INominatimLocal {
 	 */
 	display_name: string
 	/**
+	 * Informações do local
+	 */
+	address: INominatimLocalAddress
+	/**
 	 * Coordenadas do local
 	 */
 	boundingbox: string[]
+}
+
+/**
+ * Informações do local
+ */
+export interface INominatimLocalAddress {
+	/**
+	 * Estado
+	 */
+	state?: string
+	/**
+	 * País
+	 */
+	country: string
+	/**
+	 * País (código)
+	 */
+	country_code: string
 }

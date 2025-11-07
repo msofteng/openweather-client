@@ -60,7 +60,12 @@ const indexController = {
     
     if (!cidadeEncontrada) {
       cidadeEncontrada = cidadeRepository.create({
-        nome: cidades[0].name
+        nome: cidades[0].name,
+        pais: cidades[0].address.country,
+        local: `POINT(${cidades[0].lon} ${cidades[0].lat})`,
+        tipo: cidades[0].addresstype,
+        osmUrl: `https://www.openstreetmap.org/${cidades[0].osm_type}/${cidades[0].osm_id}`,
+        estado: cidades[0].address.state
       })
 
       await cidadeRepository.save(cidadeEncontrada)
