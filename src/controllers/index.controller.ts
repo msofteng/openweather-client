@@ -82,7 +82,7 @@ const indexController = {
       })
     }
 
-    if (previsao.daily.length > 0) {
+    if (previsao.daily && previsao.daily.length > 0) {
       cidadeEncontrada = await cidadeRepository.save({
         ...cidadeEncontrada,
         previsoes: previsao.daily.map((dia) => ({
