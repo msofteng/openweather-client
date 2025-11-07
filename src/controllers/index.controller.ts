@@ -15,7 +15,7 @@ const indexController = {
    * @param {Response} res dados da resposta
    */
   homePage: (req: Request, res: Response) => {
-    res.sendFile('index.html')
+    return res.sendFile('index.html')
   },
 
   buscarPrevisao: async (
@@ -31,7 +31,7 @@ const indexController = {
     res: Response
   ) => {
     if (!req.query.city) {
-      res.status(400).send({
+      return res.status(400).send({
         message: 'Insira o nome de uma cidade'
       })
     }
@@ -39,7 +39,7 @@ const indexController = {
     const cidades = await nominatimService.getInfoLocalsByName(req.query.city ?? '')
 
     if (cidades.length === 0) {
-      res.status(404).send({
+      return res.status(404).send({
         message: 'Nenhum local foi encontrado'
       })
     }
@@ -51,7 +51,7 @@ const indexController = {
     })
 
     if (previsao.cod) {
-      res.status(401).send({
+      return res.status(401).send({
         message: 'Chave de API inválida'
       })
     }
@@ -101,7 +101,7 @@ const indexController = {
       })
     }
 
-    res.send({
+    return res.send({
       ...cidadeEncontrada,
       previsoes: cidadeEncontrada.previsoes.map((previsao) => ({
         ...previsao,
@@ -122,7 +122,7 @@ const indexController = {
     res: Response
   ) => {
     if (!req.query.name) {
-      res.status(400).send({
+      return res.status(400).send({
         message: 'Insira o nome de uma cidade'
       })
     }
@@ -132,12 +132,12 @@ const indexController = {
     })
 
     if (!cidade) {
-      res.status(404).send({
+      return res.status(404).send({
         message: 'Cidade não encontrada'
       })
     }
 
-    res.send(cidade)
+    return res.send(cidade)
   }
 }
 
