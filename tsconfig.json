@@ -51,6 +51,7 @@
       "@interfaces/*": ["interfaces/*"],
       "@configs/*": ["configs/*"],
       "@entities/*": ["entities/*"],
+      "@repos/*": ["repositories/*"],
       "@functions/*": ["utils/functions/*"]
     }
   }

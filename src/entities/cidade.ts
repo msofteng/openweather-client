@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import Previsao from '@entities/previsao'
 
 @Entity()
 export default class Cidade {
@@ -23,6 +24,15 @@ export default class Cidade {
   @Column({ name: 'osm_url' })
   osmUrl: string
 
+  @OneToMany(
+    () => Previsao,
+    (previsao) => previsao.cidade,
+    {
+      cascade: true
+    }
+  )
+  previsoes: Previsao[]
+
   constructor(
     id: number,
     nome: string,
@@ -30,6 +40,7 @@ export default class Cidade {
     local: string,
     tipo: string,
     osmUrl: string,
+    previsoes: Previsao[],
     estado?: string
   ) {
     this.id = id
@@ -38,6 +49,7 @@ export default class Cidade {
     this.local = local
     this.tipo = tipo
     this.osmUrl = osmUrl
+    this.previsoes = previsoes
     this.estado = estado
   }
 }

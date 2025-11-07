@@ -18,7 +18,10 @@ const cidadeRepository = dataSource.getRepository(Cidade).extend({
     return this.find({
       where: cidade ?? {},
       skip: (page - 1) * qtd,
-      take: qtd
+      take: qtd,
+      relations: {
+        previsoes: true
+      }
     })
   },
 

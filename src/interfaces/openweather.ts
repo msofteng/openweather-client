@@ -97,7 +97,7 @@ export interface IOpenWeatherCurrent {
 	 */
 	feels_like: number
 	/**
-	 * Pressão atmosférica ao nível do mar hPa
+	 * Pressão atmosférica ao nível do mar (hPa)
 	 */
 	pressure: number
 	/**

@@ -1,11 +1,10 @@
 /**
  * Converte hora atual Unix UTC em timestamp (YYYY-MM-DD hh:mm:ss)
- * ajustado para o fuso horário de Brasília (UTC-3).
  * 
  * @param {number} dt - Hora atual em Unix UTC (segundos)
  * @returns {string} - Timestamp no formato "YYYY-MM-DD hh:mm:ss"
  */
-export function converterUnixParaTimestampBrasilia(dt: number): string {
+export function converterUnixParaTimestamp(dt: number): string {
   // dt vem em segundos, Date espera milissegundos
   const date = new Date(dt * 1000)
   const ano = date.getUTCFullYear()

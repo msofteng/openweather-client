@@ -3,7 +3,9 @@ import { Request, Response } from 'express'
 import config from '@configs/env'
 import nominatimService from '@services/nominatum.service'
 import openWeatherService from '@services/openweather.service'
-import cidadeRepository from 'repositories/cidade.repository'
+import cidadeRepository from '@repos/cidade.repository'
+import { converterKelvinParaCelsius, converterMsParaKmH, converterUnixParaTimestamp } from '@functions/openweather.util'
+import previsaoRepository from '@repos/previsao.repository'
 
 const indexController = {
   /**
@@ -54,12 +56,17 @@ const indexController = {
       })
     }
 
-    let cidadeEncontrada = await cidadeRepository.findOneBy({
-      nome: cidades[0].name
+    let cidadeEncontrada = await cidadeRepository.findOne({
+      where: {
+        nome: cidades[0].name
+      },
+      relations: {
+        previsoes: true
+      }
     })
     
     if (!cidadeEncontrada) {
-      cidadeEncontrada = cidadeRepository.create({
+      cidadeEncontrada = await cidadeRepository.save({
         nome: cidades[0].name,
         pais: cidades[0].address.country,
         local: `POINT(${cidades[0].lon} ${cidades[0].lat})`,
@@ -67,13 +74,33 @@ const indexController = {
         osmUrl: `https://www.openstreetmap.org/${cidades[0].osm_type}/${cidades[0].osm_id}`,
         estado: cidades[0].address.state
       })
-
-      await cidadeRepository.save(cidadeEncontrada)
+    } else {
+      await previsaoRepository.delete({
+        cidade: {
+          id: cidadeEncontrada.id
+        }
+      })
     }
-    
-    console.log(cidadeEncontrada)
 
-    res.send(previsao)
+    if (previsao.daily.length > 0) {
+      cidadeEncontrada = await cidadeRepository.save({
+        ...cidadeEncontrada,
+        previsoes: previsao.daily.map((dia) => ({
+          descricao: dia.weather[0].description,
+          dtPrevisao: converterUnixParaTimestamp(dia.dt),
+          temperatura: `${dia.temp}°C`,
+          pressao: `${dia.pressure} hPa`,
+          umidade: `${dia.humidity}%`,
+          nebulosidade: `${dia.clouds}%`,
+          vento: `${converterMsParaKmH(dia.wind_speed)} km/h`,
+          chuva: dia.rain ? `${dia.rain['1h']} mm` : '-',
+          imgUrl: `http://openweathermap.org/img/wn/${dia.weather[0].icon}@4x.png`,
+          cidade: { ...cidadeEncontrada, previsoes: [] }
+        }))
+      })
+    }
+
+    res.send(cidadeEncontrada)
   }
 }
 
